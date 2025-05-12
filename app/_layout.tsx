@@ -1,18 +1,23 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
 import { Stack } from "expo-router";
 import { AuthProvider } from "@/contexts/authContext";
+import { useEffect } from "react";
+import * as SplashScreen from 'expo-splash-screen';
 
-const StackLayout = () => {
-  return <Stack screenOptions={{ headerShown: false }} />;
-};
+// Prevent splash screen from auto-hiding
+SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout(){
+export default function RootLayout() {
+  useEffect(() => {
+    // Hide splash screen after a delay
+    const hideSplash = async () => {
+      await SplashScreen.hideAsync();
+    };
+    hideSplash();
+  }, []);
+
   return (
     <AuthProvider>
-      <StackLayout/>
+      <Stack screenOptions={{ headerShown: false }} />
     </AuthProvider>
-  )
+  );
 }
-
-const styles = StyleSheet.create({});

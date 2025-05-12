@@ -1,29 +1,30 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React, { useEffect } from "react";
 import { colors } from "@/constants/theme";
 import { useRouter } from "expo-router";
+import { Image } from "expo-image";
 
-const Index = () => {
-  // const router = useRouter();
+export default function Index() {
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     router.push("/(auth)/welcome"); 
-  //   }, 10000);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/(auth)/welcome");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        resizeMode="contain"
-        source={require("@/assets/images/welcome.png")} 
+        contentFit="contain"
+        source={require("@/assets/images/welcome.png")}
       />
     </View>
   );
-};
-
-export default Index;
+}
 
 const styles = StyleSheet.create({
   container: {
