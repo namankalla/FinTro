@@ -29,9 +29,6 @@ const Login = () => {
     if(!res.success){
       Alert.alert("Login", res.msg);
     }
-    // console.log("email: ", emailRef.current);
-    // console.log("password: ", passwordRef.current);
-    // console.log("good to go");
   };
 
   return (
@@ -54,6 +51,8 @@ const Login = () => {
             placeholder="Enter your email"
             onChangeText={(value) => (emailRef.current = value)}
             icon={<Icons.At size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
+            keyboardType="email-address"
+            autoCapitalize="none"
           />
 
           <Input
@@ -63,9 +62,11 @@ const Login = () => {
             icon={<Icons.Lock size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
           />
 
-          <Typo size={14} color={colors.text} style={{ alignSelf: "flex-end" }}>
-            Forgot Password?
-          </Typo>
+          <Pressable onPress={() => router.push("/(auth)/forgot-password")}>
+            <Typo size={14} color={colors.text} style={{ alignSelf: "flex-end" }}>
+              Forgot Password?
+            </Typo>
+          </Pressable>
 
           <Button loading={isLoading} onPress={handleSubmit}>
             <Typo fontWeight={"700"} color={colors.black} size={21}>Login</Typo>
