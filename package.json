@@ -29,6 +29,7 @@
     "expo-image": "~1.10.6",
     "expo-linking": "~7.0.5",
     "expo-router": "~4.0.19",
+    "expo-sms": "~11.7.1",
     "expo-splash-screen": "^0.29.24",
     "expo-status-bar": "~2.0.1",
     "expo-symbols": "~0.2.2",
